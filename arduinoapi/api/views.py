@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Config
-from .serializer import ConfigSerializer
+from .serializers import ConfigSerializer
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
@@ -24,7 +24,7 @@ class ConfigView(viewsets.ViewSet):
         serializer=ConfigSerializer(stu)
         return Response(serializer.data)
     
-    def partial_updata(self,request,pk=None):
+    def update(self,request,pk=None):
             stu=Config.objects.filter(id=pk).first()
             if stu is None:
                     return Response({"msg":"id not exist is not exist"},status=status.HTTP_404_NOT_FOUND)

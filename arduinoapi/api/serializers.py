@@ -1,6 +1,6 @@
 from .models import Config
-from rest_framework.serializers import serializer
-class ConfigSerializer(serializer.ModelSerializer):
+from rest_framework import serializers
+class ConfigSerializer(serializers.ModelSerializer):
     class Meta:
         model=Config
         fields='__all__'
